@@ -107,7 +107,7 @@ export class Renderer {
 
     private constructor() {
         const webgl2Context = (<HTMLCanvasElement>document.getElementById('canvas')).getContext('webgl2', {
-            alpha: false,
+            alpha: true,
         });
 
         if (webgl2Context === null) {
@@ -662,7 +662,7 @@ export class Renderer {
 
         this._gl.enable(this._gl.DEPTH_TEST);
         this._gl.enable(this._gl.BLEND);
-        this._gl.clearColor(this._backgroundColour.r, this._backgroundColour.g, this._backgroundColour.b, 1.0);
+        this._gl.clearColor(this._backgroundColour.r, this._backgroundColour.g, this._backgroundColour.b, 0.0);
         this._gl.clear(this._gl.COLOR_BUFFER_BIT | this._gl.DEPTH_BUFFER_BIT);
     }
 

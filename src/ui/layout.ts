@@ -497,6 +497,22 @@ export class UI {
 
     private _toolbarRight = {
         groups: {
+            'display': {
+                components: {
+                    'grid': new ToolbarItemComponent({ id: 'grid-right', iconSVG: AppIcons.GRID })
+                        .onClick(() => {
+                            Renderer.Get.toggleIsGridEnabled();
+                        })
+                        .isActive(() => {
+                            return Renderer.Get.isGridEnabled();
+                        })
+                        .isEnabled(() => {
+                            return Renderer.Get.getActiveMeshType() !== MeshType.None;
+                        })
+                        .setTooltip('toolbar.toggle_grid'),
+                },
+                componentOrder: ['grid'],
+            },
             'zoom': {
                 components: {
                     'zoomOut': new ToolbarItemComponent({ id: 'zout', iconSVG: AppIcons.MINUS })
@@ -539,7 +555,7 @@ export class UI {
                 componentOrder: ['perspective', 'orthographic'],
             },
         },
-        groupsOrder: ['camera', 'zoom'],
+        groupsOrder: ['camera', 'display', 'zoom'],
     };
 
     private _uiDull: { [key: string]: Group } = this._ui;

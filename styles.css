@@ -54,6 +54,7 @@ body {
 canvas {
   width: 100%;
   height: 100%;
+  background: transparent;
 }
 
 .content {
@@ -99,6 +100,7 @@ canvas {
 
 .column-canvas {
   cursor: grab;
+  background: linear-gradient(#1a1d22, #0a0b0c);
 }
 
 .column-console {
