@@ -68,7 +68,6 @@ export class UI {
                 payload: locale.language_code,
             });
         });
-        this._ui.settings.components.language = languageComponents;
 
         EventManager.Get.add(EAppEvent.onLanguageChanged, () => {
             this._handleLanguageChange();
@@ -82,26 +81,8 @@ export class UI {
         });
     }
 
-    public uiOrder = ['settings', 'import', 'materials', 'voxelise', 'assign', 'export'];
+    public uiOrder = [ 'import', 'materials', 'voxelise', 'assign', 'export'];
     public _ui = {
-        'settings': {
-            id: 'settings',
-            label: LOC('settings.heading'),
-            components: {
-                'language': new ComboboxComponent<string>(), // Handled in constructor
-                'overrideHeight': new SliderComponent()
-                    .setMin(16)
-                    .setMax(10000)
-                    .setDefaultValue(380)
-                    .setDecimals(0)
-                    .setStep(1)
-                    .setLabel('settings.components.overrideHeight')
-                    .addValueChangedListener((newValue) => {
-                        AppConfig.Get.CONSTRAINT_MAXIMUM_HEIGHT = newValue;
-                    })
-            },
-            componentOrder: ['language', 'overrideHeight'],
-        },
         'import': {
             id: 'import',
             label: LOC('import.heading'),
