@@ -631,11 +631,16 @@ export class UI {
         // Build console
         AppConsole.Get.build();
 
-        Split(['.column-sidebar', '.column-canvas'], {
-            sizes: [20, 80],
-            minSize: [600, 500],
-            gutterSize: 5,
-        });
+        const screenWidth = window.innerWidth;
+        if (screenWidth > 768) {
+            const sidebarMin = screenWidth <= 1024 ? 300 : 600;
+            const canvasMin = screenWidth <= 1024 ? 300 : 500;
+            Split(['.column-sidebar', '.column-canvas'], {
+                sizes: [20, 80],
+                minSize: [sidebarMin, canvasMin],
+                gutterSize: 5,
+            });
+        }
 
         Split(['.column-properties', '.column-console'], {
             sizes: [85, 15],
