@@ -22,7 +22,6 @@ import { CheckboxComponent } from './components/checkbox';
 import { ComboboxComponent } from './components/combobox';
 import { ConfigComponent } from './components/config';
 import { FileComponent } from './components/file_input';
-import { HeaderComponent } from './components/header';
 import { PaletteComponent } from './components/palette';
 import { PlaceholderComponent } from './components/placeholder';
 import { SliderComponent } from './components/slider';
@@ -604,7 +603,6 @@ export class UI {
 
             sidebarHTML.add(`<div class="container-properties">`);
             {
-                sidebarHTML.add(HeaderComponent.Get.generateHTML());
 
                 for (const groupName of this.uiOrder) {
                     const group = this._uiDull[groupName];
@@ -710,8 +708,7 @@ export class UI {
     }
 
     private _handleLanguageChange() {
-        HeaderComponent.Get.refresh();
-
+        
 
         Object.values(this._toolbarLeft.groups).forEach((group) => {
             Object.values(group.components).forEach((comp) => {
@@ -791,8 +788,7 @@ export class UI {
     }
 
     public registerEvents() {
-        HeaderComponent.Get.registerEvents();
-        HeaderComponent.Get.finalise();
+        
 
         for (let action = 0; action < EAction.MAX; ++action) {
             this._forEachComponent(action, (component) => {
